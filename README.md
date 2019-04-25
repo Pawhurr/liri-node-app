@@ -8,3 +8,5 @@ This node app will allow you to search for upcoming concerts for artists you lik
 `spotify-this-song` followed by a song name will return information about the song, artist, and album.
 `movie-this` followed by a movie name will return a number of pieces of information including plot and actors.
 `do-what-it-says` randomly chooses from some preset commands.
+
+Watch a runthrough of the app [here!](https://drive.google.com/file/d/1A2yVCIxgF6zCTWZ_S2anwW-R6JsWm_lS/view)
