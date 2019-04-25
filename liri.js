@@ -93,12 +93,12 @@ function doWhat() {
             movieName = dataArr[3];
             movie();
         } else if (randNum === 2) {
-            artist = dataArr[5];
+            artist = dataArr[5].split('"').join('');
+            console.log("WHITESNAKE!");
             concert();
         }
     })
 }
-
 
 
 
