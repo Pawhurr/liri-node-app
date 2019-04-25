@@ -12,8 +12,18 @@ var movieName = process.argv.slice(3).join(" ");
 var userInput = process.argv[2];
 
 function concert() {
+    if (artist === "") {
+        console.log("~~~~~~~~~~~~~~~~~~")
+        console.log("Please enter an artist you'd like to see in concert after 'concert-this'.");
+        return;
+    }
     axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
     .then(function(response) {
+        if (response.data[0] === undefined) {
+            console.log("~~~~~~~~~~~~~~~~~~")
+            console.log("Sorry, no upcoming dates.  Try another artist.")
+        };
+    
         for (var i = 0; i < response.data.length; i++) {
         console.log("~~~~~~~~~~~~~~~~~~")
         console.log(response.data[i].venue.name);
@@ -29,12 +39,19 @@ function concert() {
 };
 
 function song() {
+    if (songName === "") {
+        songName = "The Sign";
+    }
     spotify.search({ type: 'track', query: songName }, function(err, response) {
         if (err) {
           return console.log('Error occurred: ' + err);
         }
-       
-      console.log(response.tracks.items); 
+        console.log("~~~~~~~~~~~~~~~~~~")
+        console.log("Artist: " + response.tracks.items[0].artists[0].name + "\n"); 
+        console.log("Song name: " + response.tracks.items[0].name + "\n");
+        console.log("Album name: " + response.tracks.items[0].album.name + "\n");
+        console.log("Preview URL: " + response.tracks.items[0].preview_url);
+
       });
 };
 
@@ -67,11 +84,19 @@ function doWhat() {
         if (error) {
             return console.log(error);
         }
-
-        console.log(data);
         var dataArr = data.split(",");
+        var randNum = Math.floor(Math.random() * 3);
+        console.log(dataArr[5]);
+        if (randNum === 0) {
         songName = dataArr[1];
         song();
+        } else if (randNum === 1) {
+            movieName = dataArr[3];
+            movie();
+        } else if (randNum === 2) {
+            artist = dataArr[5];
+            concert();
+        }
     })
 }
 
