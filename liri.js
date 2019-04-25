@@ -86,7 +86,6 @@ function doWhat() {
         }
         var dataArr = data.split(",");
         var randNum = Math.floor(Math.random() * 3);
-        console.log(dataArr[5]);
         if (randNum === 0) {
         songName = dataArr[1];
         song();
