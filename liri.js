@@ -40,7 +40,7 @@ function concert() {
 
 function song() {
     if (songName === "") {
-        songName = "The Sign";
+        songName = "The Sign ace of base";
     }
     spotify.search({ type: 'track', query: songName }, function(err, response) {
         if (err) {
